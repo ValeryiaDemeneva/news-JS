@@ -1,3 +1,5 @@
+import { TOptions } from './../../typescript/types';
+
 class Loader {
     constructor(baseLink, options) {
         this.baseLink = baseLink;
@@ -23,7 +25,9 @@ class Loader {
         return res;
     }
 
-    makeUrl(options, endpoint) {
+    makeUrl(options: TOptions | object, endpoint: string) {
+        console.log(options, 'OPTIONS');
+        console.log(endpoint, 'ENDPOINT DLAsede');
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -34,7 +38,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method, endpoint, callback, options = {}) {
+    load(method: string, endpoint: string, callback, options = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
