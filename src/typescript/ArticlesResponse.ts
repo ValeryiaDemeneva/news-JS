@@ -3,7 +3,7 @@ interface ArticleSources {
     name: string;
 }
 
-interface Article {
+export interface Article {
     source: ArticleSources;
     author: string;
     title: string;
