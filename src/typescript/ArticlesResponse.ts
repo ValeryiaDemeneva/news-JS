@@ -1,5 +1,5 @@
 interface ArticleSources {
-    id: string;
+    id: string | null;
     name: string;
 }
 
