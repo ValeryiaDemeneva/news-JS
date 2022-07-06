@@ -1,6 +1,6 @@
 body {
-    color: #fff;
-    background: #17181c;
+    color: rgb(0, 0, 0);
+    background: #ed93b5;
     font-family: sans-serif;
 }
 
@@ -32,4 +32,15 @@ footer .copyright a:hover {
 }
 footer .copyright:before {
     content: '©';
+}
+
+.footer-links-container {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    list-style-type: none;
+
 }

@@ -3,7 +3,7 @@ import { SourcesResponse } from '../../typescript/SourcesResponse';
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
 
-export class App {
+class App {
     controller: AppController;
     view: AppView;
 
@@ -13,14 +13,14 @@ export class App {
     }
 
     start() {
-        document?.querySelector('.sources')?.addEventListener('click', (e: Event) =>
-            this.controller.getNews(e, (data: ArticlesResponse) => {
-                this.view.drawNews(data);
-            })
-        );
-        this.controller.getSources((data: SourcesResponse) => {
-            this.view.drawSources(data);
+        document?.querySelector('.sources')?.addEventListener('click', (e: Event) => {
+            this.controller.getNews(e, (res: ArticlesResponse) => {
+                console.log('a');
+                this.view.drawNews(res);
+            });
         });
+
+        this.controller.getSources((res: SourcesResponse) => this.view.drawSources(res));
     }
 }
 

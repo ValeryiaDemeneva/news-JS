@@ -7,6 +7,7 @@ export type ApiKey = {
 export type ArticlesResponseHandler = (data: ArticlesResponse) => void;
 export type SourcesResponseHandler = (data: SourcesResponse) => void;
 export type ResponseHandler = ArticlesResponseHandler | SourcesResponseHandler;
+
 class Loader {
     baseLink: string;
     options: ApiKey;
@@ -34,7 +35,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: ApiKey | object, endpoint: string): string {
+    makeUrl(options: ApiKey, endpoint: string): string {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 

@@ -1,5 +1,6 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
+const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -22,6 +23,10 @@ const baseConfig = {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
+            {
+                test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
+                type: 'asset/resource',
+            },
         ],
     },
     resolve: {
@@ -37,6 +42,12 @@ const baseConfig = {
             filename: 'index.html',
         }),
         new CleanWebpackPlugin(),
+        new CopyPlugin({
+            patterns: [{
+                from: path.resolve(__dirname, './src/image'),
+                    to: path.resolve(__dirname, 'dist/img'),
+            }],
+        }),
     ],
 };
 

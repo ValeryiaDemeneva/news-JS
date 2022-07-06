@@ -2,16 +2,14 @@ import { Source } from './../../../typescript/SourcesResponse';
 import './sources.css';
 
 class Sources {
-    draw(data: Source[]) {
+    draw(sources: Source[]) {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
-
-        data.forEach((item) => {
+        sources.forEach((item) => {
             const sourceClone = sourceItemTemp.content.cloneNode(true) as HTMLElement;
-
-            const sourceItem = sourceClone.querySelector<HTMLElement>('.source__item-name');
+            const sourceItem = sourceClone.querySelector<HTMLElement>('.source__item');
             sourceItem?.setAttribute('data-source-id', item.id || '');
-            const sourceItemName = sourceClone.querySelector<HTMLElement>('.source__item');
+            const sourceItemName = sourceClone.querySelector<HTMLElement>('.source__item-name');
             if (sourceItemName) {
                 sourceItemName.textContent = item.name;
             }

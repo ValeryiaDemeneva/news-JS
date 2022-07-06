@@ -1,10 +1,7 @@
-interface ArticleSources {
-    id: string | null;
-    name: string;
-}
+import { ArticleSourses } from './SourcesResponse';
 
 export interface Article {
-    source: ArticleSources;
+    source: ArticleSourses;
     author: string;
     title: string;
     description: string;
